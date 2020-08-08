@@ -1,13 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Button, Popover } from 'reactstrap';
-import SignIn from './SignIn';
-import SignUp from './Signup/SignUp';
+import Signin from './Signin/Signin';
 import RegisterPage from './Signup/register';
-import { NavLink as Link } from 'react-router-dom';
+import { AccountMenu } from 'app/shared/layout/menus';
 import './Auth.scss';
-import MenuItem from 'app/shared/layout/menus/menu-item';
-import { Translate, translate } from 'react-jhipster';
-import { AdminMenu, EntitiesMenu, AccountMenu, LocaleMenu } from 'app/shared/layout/menus';
 
 const Auth = ({isAuthenticated}) => {
 	const [popoverOpen, setPopoverOpen] = useState(false);
@@ -41,7 +37,7 @@ const Auth = ({isAuthenticated}) => {
 								</div>
 							</div>
 							{
-								isSignUp ? <RegisterPage toggle={toggle} /> : <SignIn toggle={toggle} /> 
+								isSignUp ? <RegisterPage toggle={toggle} /> : <Signin toggle={toggle} /> 
 							}
 						</form>
 					</Popover>

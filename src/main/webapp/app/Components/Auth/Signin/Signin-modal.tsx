@@ -1,32 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Translate, translate } from 'react-jhipster';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Alert, Row, Col } from 'reactstrap';
+import { Button, Alert, Row, Col } from 'reactstrap';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
-import { Link, Redirect } from 'react-router-dom';
 
 export interface ILoginModalProps {
-  showModal: boolean;
   loginError: boolean;
   handleLogin: Function;
   handleClose: Function;
 }
 
 class SignInModal extends React.Component<ILoginModalProps> {
-	state = {
-		clicked: false
-	}
   handleSubmit = (event, errors, { username, password, rememberMe }) => {
     const { handleLogin } = this.props;
 	handleLogin(username, password, rememberMe);
-	this.setState({clicked: true});
   };
 
-  componentDidUpdate() {
-	 // console.log('this.props.loginError ', this.props.loginError, this.props.clicked);
-  }
-
   render() {
-	const { loginError, handleClose } = this.props;
+	const { loginError } = this.props;
 
     return (
       <div>
@@ -57,9 +47,7 @@ class SignInModal extends React.Component<ILoginModalProps> {
                   errorMessage="Password cannot be empty!"
                 />
                 <AvGroup check inline>
-                  {/* <Label className="form-check-label"> */}
                     <AvInput type="checkbox" name="rememberMe" /> <Translate contentKey="login.form.rememberme">Remember me</Translate>
-                  {/* </Label> */}
                 </AvGroup>
               </Col>
             </Row>
